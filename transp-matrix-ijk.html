@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Транспонирование тензора трехмерной матрицы третьего порядка</title>
+    </head>
+    <body>
+        <form>
+            <input type="number" value="0" name="value-0-0-0">
+            <input type="number" value="0" name="value-0-1-0">
+            <input type="number" value="0" name="value-0-2-0">
+            <br>
+            <input type="number" value="0" name="value-1-0-0">
+            <input type="number" value="0" name="value-1-1-0">
+            <input type="number" value="0" name="value-1-2-0">
+            <br>
+            <input type="number" value="0" name="value-2-0-0">
+            <input type="number" value="0" name="value-2-1-0">
+            <input type="number" value="0" name="value-2-2-0">
+
+            <br><br>
+
+            <input type="number" value="0" name="value-0-0-1">
+            <input type="number" value="0" name="value-0-1-1">
+            <input type="number" value="0" name="value-0-2-1">
+            <br>
+            <input type="number" value="0" name="value-1-0-1">
+            <input type="number" value="0" name="value-1-1-1">
+            <input type="number" value="0" name="value-1-2-1">
+            <br>
+            <input type="number" value="0" name="value-2-0-1">
+            <input type="number" value="0" name="value-2-1-1">
+            <input type="number" value="0" name="value-2-2-1">
+
+            <br><br>
+
+            <input type="number" value="0" name="value-0-0-2">
+            <input type="number" value="0" name="value-0-1-2">
+            <input type="number" value="0" name="value-0-2-2">
+            <br>
+            <input type="number" value="0" name="value-1-0-2">
+            <input type="number" value="0" name="value-1-1-2">
+            <input type="number" value="0" name="value-1-2-2">
+            <br>
+            <input type="number" value="0" name="value-2-0-2">
+            <input type="number" value="0" name="value-2-1-2">
+            <input type="number" value="0" name="value-2-2-2">
+
+            <br><br>
+
+            <select name="first-value">
+                <option value="0" selected>i</option>
+                <option value="1">j</option>
+                <option value="2">k</option>
+            </select>
+            <select name="second-value">
+                <option value="0">i</option>
+                <option value="1" selected>j</option>
+                <option value="2">k</option>
+            </select>
+            <select name="third-value">
+                <option value="0">i</option>
+                <option value="1">j</option>
+                <option value="2" selected>k</option>
+            </select>
+
+            <input type="button" onclick="transp(this.form)" value="Транспонировать!">
+        </form>
+
+        <span id="value-0-0-0">?</span>
+        <span id="value-0-1-0">?</span>
+        <span id="value-0-2-0">?</span>
+        <br>
+        <span id="value-1-0-0">?</span>
+        <span id="value-1-1-0">?</span>
+        <span id="value-1-2-0">?</span>
+        <br>
+        <span id="value-2-0-0">?</span>
+        <span id="value-2-1-0">?</span>
+        <span id="value-2-2-0">?</span>
+
+        <br><br>
+
+        <span id="value-0-0-1">?</span>
+        <span id="value-0-1-1">?</span>
+        <span id="value-0-2-1">?</span>
+        <br>
+        <span id="value-1-0-1">?</span>
+        <span id="value-1-1-1">?</span>
+        <span id="value-1-2-1">?</span>
+        <br>
+        <span id="value-2-0-1">?</span>
+        <span id="value-2-1-1">?</span>
+        <span id="value-2-2-1">?</span>
+
+        <br><br>
+
+        <span id="value-0-0-2">?</span>
+        <span id="value-0-1-2">?</span>
+        <span id="value-0-2-2">?</span>
+        <br>
+        <span id="value-1-0-2">?</span>
+        <span id="value-1-1-2">?</span>
+        <span id="value-1-2-2">?</span>
+        <br>
+        <span id="value-2-0-2">?</span>
+        <span id="value-2-1-2">?</span>
+        <span id="value-2-2-2">?</span>
+
+        <script>
+            function transp(f) {
+                function select(i, j, k, needle) {
+                    if (needle == 0) {
+                        return i;
+                    } else if (needle == 1) {
+                        return j;
+                    } else {
+                        return k;
+                    }
+                }
+
+                for (var i = 0; i < 3; ++i) {
+                    for (var j = 0; j < 3; ++j) {
+                        for (var k = 0; k < 3; ++k) {
+                            document.getElementById('value-' + i + '-' + j + '-' + k).textContent = f['value-' + select(i, j, k, f["first-value"].value) + '-' + select(i, j, k, f["second-value"].value) + '-' + select(i, j, k, f["third-value"].value)].value;
+                        }
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
